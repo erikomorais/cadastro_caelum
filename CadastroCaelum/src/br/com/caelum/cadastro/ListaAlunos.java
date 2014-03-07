@@ -76,11 +76,11 @@ public class ListaAlunos extends Activity {
             return false;
     default:
         return super.onOptionsItemSelected(item);
-	return super.onOptionsItemSelected(item);
-	}
-	
 
 	
+	
+	}
+	}
 	
 
 }
