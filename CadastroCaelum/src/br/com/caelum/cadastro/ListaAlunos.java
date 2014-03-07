@@ -1,9 +1,11 @@
 package br.com.caelum.cadastro;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -60,7 +62,23 @@ public class ListaAlunos extends Activity {
 		inflater.inflate(R.menu.menu_principal, menu);
 		// TODO Auto-generated method stub
 		return super.onCreateOptionsMenu(menu);
+		
 	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+        case R.id.menu_novo:
+
+            Intent intent = new Intent(ListaAlunos.this, 
+                CreateAluno.class);
+
+            startActivity(intent);
+            return false;
+    default:
+        return super.onOptionsItemSelected(item);
+	return super.onOptionsItemSelected(item);
+	}
+	
 
 	
 	
