@@ -9,7 +9,7 @@
     tools:context=".ListaAlunos" >
 
 	<ListView 
-	    android:id="@+id/lista"
+	    android:id="@+id/lista_alunos"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
 	    ></ListView>

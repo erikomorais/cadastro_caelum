@@ -1,9 +1,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        
+        android:id="@+id/novo"
+       android:showAsAction="ifRoom"
+        android:title="@string/novo"/>
+     <item
+        android:id="@+id/mapa"
+        android:showAsAction="ifRoom"
+        android:title="@string/mapa"/>
+     
+     <item
+        android:id="@+id/enviar_alunos"
+        android:showAsAction="ifRoom"
+        android:title="@string/sincronizar"/>
+     
+      <item
+        android:id="@+id/receber_provas"
+        android:showAsAction="ifRoom"
+        android:title="@string/receber_provas"/>
+      
+      <item
+        android:id="@+id/preferencias"
+        android:showAsAction="ifRoom"
+        android:title="@string/preferencias"/>
 
 </menu>
