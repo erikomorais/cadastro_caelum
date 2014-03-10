@@ -54,9 +54,11 @@
 			android:layout_height="wrap_content"
 			android:text="@string/nota_label" />
 
-		<SeekBar android:id="@+id/nota"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content" />
+		<RatingBar
+		    android:id="@+id/nota"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:numStars="5" />
 
 		<Button android:id="@+id/botao"
 			android:layout_width="wrap_content"
