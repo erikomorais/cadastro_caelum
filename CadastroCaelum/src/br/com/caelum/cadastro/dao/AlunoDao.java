@@ -1,4 +1,4 @@
-package br.com.caelum.cadastra.dao;
+package br.com.caelum.cadastro.dao;
 
 import br.com.caelum.cadastro.modelo.Aluno;
 import android.app.DownloadManager.Query;
