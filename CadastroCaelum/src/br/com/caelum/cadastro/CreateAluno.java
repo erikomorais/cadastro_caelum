@@ -1,5 +1,6 @@
 package br.com.caelum.cadastro;
 
+import br.com.caelum.cadastro.dao.AlunoDao;
 import br.com.caelum.cadastro.modelo.Aluno;
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 public class CreateAluno extends Activity{
 
 	private CadastroHelper helper;
+ 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	
@@ -24,8 +26,11 @@ public class CreateAluno extends Activity{
 			@Override
 			public void onClick(View v) {
 				Aluno aluno = helper.pegaAlunoDoFormulario();
-				Toast.makeText(CreateAluno.this, aluno.getNome(), Toast.LENGTH_SHORT).show();
+				AlunoDao alunoDAO = new AlunoDao(CreateAluno.this);
+				alunoDAO.insere(aluno);
+				alunoDAO.close();
 				
+				finish();
 			}
 		});
 	}
