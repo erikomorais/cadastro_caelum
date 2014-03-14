@@ -37,6 +37,12 @@ public class AlunoDao extends SQLiteOpenHelper {
 	}
 	
 	public void insere(Aluno aluno){
+		ContentValues values = toValues(aluno);
+		getWritableDatabase().insert(TABELA, null, values);
+		
+	}
+
+	private ContentValues toValues(Aluno aluno) {
 		ContentValues values = new ContentValues();
 		values.put("nome", aluno.getNome());
 		values.put("nota", aluno.getNota());
@@ -44,8 +50,7 @@ public class AlunoDao extends SQLiteOpenHelper {
 		values.put("endereco", aluno.getEndereco());
 		values.put("site", aluno.getSite());
 		values.put("nota", aluno.getNota());
-		getWritableDatabase().insert(TABELA, null, values);
-		
-	}
+		return values;
+	}	
 
 }

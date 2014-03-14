@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class CreateAluno extends Activity{
 
 	private CadastroHelper helper;
- 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	
@@ -31,8 +31,10 @@ public class CreateAluno extends Activity{
 				alunoDAO.close();
 				
 				finish();
+				//encerra a activity
 			}
 		});
 	}
+	
 
 }
