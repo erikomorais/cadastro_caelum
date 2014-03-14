@@ -28,7 +28,6 @@ public class CreateAluno extends Activity{
 				Aluno aluno = helper.pegaAlunoDoFormulario();
 				AlunoDao alunoDAO = new AlunoDao(CreateAluno.this);
 				alunoDAO.insere(aluno);
-				alunoDAO.close();
 				
 				finish();
 				//encerra a activity

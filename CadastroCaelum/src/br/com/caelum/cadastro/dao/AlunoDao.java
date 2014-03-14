@@ -8,37 +8,23 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class AlunoDao extends SQLiteOpenHelper {
-	private static final int VERSAO = 1;
-	private static final String TABELA = "FJ57";
+public class AlunoDao { 
 	private static final String DATABASE = "CadastroCaelum";
+	private static final int VERSAO = 1;
+	private SqlHelper DaoSQLHelper;
 
 	public AlunoDao(Context context) {
-		super(context, DATABASE, null, 1);
-		// TODO Auto-generated constructor stub
+		
+		this.DaoSQLHelper = new SqlHelper(context, DATABASE, null, VERSAO);
 	}
 
-	@Override
-	public void onCreate(SQLiteDatabase db) {
-		String ddlCreateTable = "CREATE TABLE "+ TABELA 
-				+ "(id INTEGER PRIMARY KEY, " + "nome TEXT UNIQUE NOT NULL, "
-				+ "telefone TEXT, " + "endereco TEXT, " + "site TEXT, "
-				+ "nota REAL, " + "foto TEXT);";
-		db.execSQL(ddlCreateTable);
 
-	}
-
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		String ddlDropTable = "DROP TABLE IF EXISTS "+ TABELA +";";
-		db.execSQL(ddlDropTable);
-		this.onCreate(db);
-
-	}
+	
 	
 	public void insere(Aluno aluno){
 		ContentValues values = toValues(aluno);
-		getWritableDatabase().insert(TABELA, null, values);
+		this.DaoSQLHelper.getWritableDatabase().insert("Aluno", null, values);
+		this.DaoSQLHelper.close();
 		
 	}
 
