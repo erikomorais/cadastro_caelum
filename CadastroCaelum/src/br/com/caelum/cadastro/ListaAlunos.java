@@ -1,5 +1,9 @@
 package br.com.caelum.cadastro;
 
+import java.util.List;
+
+import br.com.caelum.cadastro.dao.AlunoDao;
+import br.com.caelum.cadastro.modelo.Aluno;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,20 +19,25 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class ListaAlunos extends Activity {
-
+	private ListView listaAlunos;
+	private void carregaLista() {
+		 	int layout = android.R.layout.simple_list_item_1;
+		 	AlunoDao alunoDAO = new AlunoDao(ListaAlunos.this);
+			List<Aluno> alunos = alunoDAO.getLista();
+			
+			ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(ListaAlunos.this, layout, alunos);
+			listaAlunos = (ListView) findViewById(R.id.lista_alunos);
+			listaAlunos.setAdapter(adapter);
+  }      
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listagem_alunos);
-		ListView lista = (ListView) findViewById(R.id.lista_alunos);
-
-		int layout = android.R.layout.simple_list_item_1;
-		String[] nomes = { "s", "Jose", "Felipe" };
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, layout,
-				nomes);
-
-		lista.setAdapter(adapter);
-		lista.setOnItemClickListener(new OnItemClickListener() {
+	   
+		carregaLista();
+	    
+		
+		listaAlunos.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view,
@@ -40,7 +49,7 @@ public class ListaAlunos extends Activity {
 
 		});
 
-		lista.setOnItemLongClickListener(new OnItemLongClickListener() {
+		listaAlunos.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> adapter, View view,
@@ -57,7 +66,7 @@ public class ListaAlunos extends Activity {
 		});
 
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -82,5 +91,12 @@ public class ListaAlunos extends Activity {
 
 		}
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+        this.carregaLista();
+	}
 
+	
 }

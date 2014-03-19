@@ -1,13 +1,12 @@
 package br.com.caelum.cadastro;
 
-import br.com.caelum.cadastro.dao.AlunoDao;
-import br.com.caelum.cadastro.modelo.Aluno;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+import br.com.caelum.cadastro.dao.AlunoDao;
+import br.com.caelum.cadastro.modelo.Aluno;
 
 public class CreateAluno extends Activity{
 

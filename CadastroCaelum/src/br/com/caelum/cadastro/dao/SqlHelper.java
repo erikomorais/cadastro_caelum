@@ -6,29 +6,34 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class SqlHelper extends SQLiteOpenHelper {
-	
+	private String ddlCreateString;
+	private String ddlUpgradeString;
 	
 	public SqlHelper(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public void setDdlCreateString(String ddlCreateString) {
+		this.ddlCreateString = ddlCreateString;
+	}
 
 
+	public void setDdlUpgradeString(String ddlUpgradeString) {
+		this.ddlUpgradeString = ddlUpgradeString;
+	}
+	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String ddlCreateTable = "CREATE TABLE Aluno"
-				+ "(id INTEGER PRIMARY KEY, " + "nome TEXT UNIQUE NOT NULL, "
-				+ "telefone TEXT, " + "endereco TEXT, " + "site TEXT, "
-				+ "nota REAL, " + "foto TEXT);";
-		db.execSQL(ddlCreateTable);
+		db.execSQL(ddlCreateString);
 
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		String ddlDropTable = "DROP TABLE IF EXISTS Aluno;";
-		db.execSQL(ddlDropTable);
+		db.execSQL(ddlUpgradeString);
 		this.onCreate(db);
 
 	}

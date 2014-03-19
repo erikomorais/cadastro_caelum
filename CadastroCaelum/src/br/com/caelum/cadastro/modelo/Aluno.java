@@ -9,6 +9,10 @@ public class Aluno {
 	private double nota;
 
 	private Long id;
+	
+	public String toString(){
+		return id.toString() + " - " +  nome;
+	}
 
 	public Long getId() {
 		return id;
