@@ -13,7 +13,7 @@ public class CadastroHelper {
 	private RatingBar ratingNota;
 	private Aluno aluno;
 
-	public CadastroHelper(CreateAluno formulario) {
+	public CadastroHelper(Formulario formulario) {
 		aluno = new Aluno();
 		editNome = (EditText) formulario.findViewById(R.id.nome);
 		editSite = (EditText) formulario.findViewById(R.id.site);
@@ -28,9 +28,19 @@ public class CadastroHelper {
 		aluno.setSite(editSite.getText().toString());
 		aluno.setTelefone(editTelefone.getText().toString());
 		aluno.setEndereco(editEndereco.getText().toString());
-		aluno.setNota(ratingNota.getRating());
+		aluno.setNota(Double.valueOf(ratingNota.getRating()));
 		return aluno;
 
+	}
+
+	public void colocaAlunoNoFormulario(Aluno alunoParaSerAlterado) {
+		editNome.setText(aluno.getNome());
+		editSite.setText(aluno.getSite());
+		editTelefone.setText(aluno.getTelefone());
+		editEndereco.setText(aluno.getEndereco());
+		ratingNota.setRating(aluno.getNota().floatValue());
+		
+		
 	}
 
 }

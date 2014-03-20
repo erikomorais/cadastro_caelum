@@ -15,6 +15,7 @@ public class AlunoDao {
 	 private static final String[] COLUNAS = { "id", "nome","telefone", "endereco", "site", "nota", "foto" };
 	private SqlHelper DaoSQLHelper;
 
+
 	public AlunoDao(Context context) {
 		
 		this.DaoSQLHelper = new SqlHelper(context, DATABASE, null, VERSAO);
@@ -67,6 +68,26 @@ public class AlunoDao {
 		values.put("site", aluno.getSite());
 		values.put("nota", aluno.getNota());
 		return values;
+	}
+
+
+
+
+	public void excluir(Aluno aluno) {
+		String[] args = {aluno.getId().toString()};
+		this.DaoSQLHelper.getWritableDatabase().delete("Aluno", "id=?", args );
+		this.DaoSQLHelper.close();
+	}
+
+
+
+
+	public void altera(Aluno aluno) {
+		ContentValues values = toValues(aluno);
+		String[] args = {aluno.getId().toString()};
+		this.DaoSQLHelper.getWritableDatabase().update("Aluno",values,"id=?",args);
+		this.DaoSQLHelper.close();
+		
 	}	
 
 }
