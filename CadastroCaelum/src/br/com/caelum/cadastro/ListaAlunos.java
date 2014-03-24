@@ -1,7 +1,7 @@
 package br.com.caelum.cadastro;
 
 import java.util.List;
-
+import br.com.caelum.cadastro.Extras;
 import br.com.caelum.cadastro.dao.AlunoDao;
 import br.com.caelum.cadastro.modelo.Aluno;
 import android.app.Activity;
@@ -44,7 +44,9 @@ public class ListaAlunos extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int posicao, long id) {
 				aluno=(Aluno) adapter.getItemAtPosition(posicao);
-				Toast.makeText(ListaAlunos.this, "Clique na posição" + posicao, Toast.LENGTH_SHORT).show();
+				Intent irParaFormulario = new Intent(ListaAlunos.this,Formulario.class);
+				irParaFormulario.putExtra(Extras.ALUNO_SELECIONADO.tos, aluno);
+				startActivity(irParaFormulario);
 			}
 		});
 		listaAlunos.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -64,20 +66,12 @@ public class ListaAlunos extends Activity {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		MenuItem ligar = menu.add("Ligar");
 		MenuItem sms = menu.add("Enviar SMS");
-		MenuItem navegar = menu.add("Ir para o site");
-		MenuItem editar = menu.add("Editar");
-		MenuItem mapa = menu.add("Ver no mapa");
+		MenuItem mapa = menu.add("Achar no mapa");
+		MenuItem navegar = menu.add("Navegar no site");
 		MenuItem excluir = menu.add("Excluir");
-		editar.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-			
-			@Override
-			public boolean onMenuItemClick(MenuItem item) {
-				Intent irParaFormulario = new Intent(ListaAlunos.this, Formulario.class);
-				irParaFormulario.putExtra("alunoClicado", aluno);
-				startActivity(irParaFormulario);
-				return false;
-			}
-		});
+		MenuItem mail = menu.add("Enviar e-mail");
+		
+		
 		excluir.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			
 			@Override

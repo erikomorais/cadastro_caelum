@@ -34,6 +34,7 @@ public class CadastroHelper {
 	}
 
 	public void colocaAlunoNoFormulario(Aluno alunoParaSerAlterado) {
+		aluno = alunoParaSerAlterado;
 		editNome.setText(aluno.getNome());
 		editSite.setText(aluno.getSite());
 		editTelefone.setText(aluno.getTelefone());

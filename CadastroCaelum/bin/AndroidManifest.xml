@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
            <activity
-            android:name="br.com.caelum.cadastro.CreateAluno"
+            android:name="br.com.caelum.cadastro.Formulario"
             android:label="@string/app_name" >
             
         </activity>
